@@ -9,16 +9,16 @@ var userDateEl = document.getElementById('event-date')
 var formSubmitHandler = function (event) {
     event.preventDefault();
 
-    var cityName = cityNameInputEl.value.trim();
     var userDate = userDateEl.value.trim();
+    var cityName = cityNameInputEl.value.trim();
     console.log(userDate)
 
     //Passes user input as argument to functions
-    if (cityName){
-        getEvents(cityName,userDate);
+    if (cityName&&userDate){
+        getEvents(userDate,cityName);
         getCityID(cityName);
     } else {
-        alert('Please enter a City')
+        alert('Please select a city and date')
     }
 }
 
@@ -52,12 +52,12 @@ var getCityID = function (city) {
         var lat = data.features[0].properties.lat;
         
         //Calls geoapify with lon and lat arguments
-        // getRestaurants(lon,lat);
-        // getTourismAttraction(lon,lat);
-        // getTourismSight(lon,lat);
-        // getNatural(lon,lat);
-        // getLeisure(lon,lat);
-        // getEntertainment(lon,lat);
+        getRestaurants(lon,lat);
+        getTourismAttraction(lon,lat);
+        getTourismSight(lon,lat);
+        getNatural(lon,lat);
+        getLeisure(lon,lat);
+        getEntertainment(lon,lat);
 
     }, (err) => {
       if (!err.canceled) {
@@ -67,9 +67,9 @@ var getCityID = function (city) {
 };
 
 //Gets City Events
-var getEvents = function (city,date) {
+var getEvents = function (date,city) {
 
-var ticketMasterURL = 'https://app.ticketmaster.com/discovery/v2/events.json?city=' + city + '&localStartDateTime=121123&apikey=35xNq6EDPwVNDTF6qYDV8EAALW4qm2rn';
+  var ticketMasterURL = 'https://app.ticketmaster.com/discovery/v2/events?apikey=35xNq6EDPwVNDTF6qYDV8EAALW4qm2rn&locale=*&startDateTime='+ date + 'T11:49:00Z&city='+ city;
 
 fetch(ticketMasterURL)
     .then(function (response) {
