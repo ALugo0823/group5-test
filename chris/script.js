@@ -4,6 +4,11 @@ var userFormEl = document.getElementById('user-city');
 var cityNameInputEl = document.getElementById('city-name');
 //Grabs User Input Date
 var userDateEl = document.getElementById('event-date')
+//Variable to access and display info out of localStorage
+var savedCityAndDateArr = JSON.parse(localStorage.getItem('savedCityAndDate')) || [];
+//Variable to create list element to display user searches
+var userSearchList = document.createElement('ul');
+userFormEl.append(userSearchList);
 
 //Function to take user input and call ticketmaster API "getEvents()" and geoapify APIs
 var formSubmitHandler = function (event) {
@@ -11,12 +16,12 @@ var formSubmitHandler = function (event) {
 
     var userDate = userDateEl.value.trim();
     var cityName = cityNameInputEl.value.trim();
-    console.log(userDate)
 
     //Passes user input as argument to functions
     if (cityName&&userDate){
         getEvents(userDate,cityName);
         getCityID(cityName);
+        saveCityAndDate();
     } else {
         alert('Please select a city and date')
     }
@@ -30,7 +35,7 @@ var getCityID = function (city) {
       currentPromiseReject = reject;
 
       var apiKey = "9987ca1c87ef4586ad39eb0cfb2ef63e";
-      var url = `https://api.geoapify.com/v1/geocode/autocomplete?text=${encodeURIComponent(city)}&limit=5&apiKey=${apiKey}`;
+      var url = `https://api.geoapify.com/v1/geocode/autocomplete?text=${encodeURIComponent(city)}&limit=1&apiKey=${apiKey}`;
 
       fetch(url)
         .then(response => {
@@ -45,7 +50,7 @@ var getCityID = function (city) {
 
     promise.then((data) => {
         // we will process data here
-        console.log('city...........',data);
+        console.log(cityNameInputEl.value,'info...........',data);
 
         //Variables to store city longitude and latitude
         var lon = data.features[0].properties.lon;
@@ -75,7 +80,7 @@ fetch(ticketMasterURL)
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          console.log('events........',data);
+          console.log( city,'events',date,'........',data);
         });
       } else {
         alert('Error: ' + response.statusText);
@@ -95,7 +100,7 @@ var getRestaurants = function (lon,lat) {
     .then(function (response) {
         if (response.ok) {
           response.json().then(function (data) {
-            console.log('restaurants.....',data);
+            console.log(cityNameInputEl.value,'restaurants.....',data);
           });
         } else {
           alert('Error: ' + response.statusText);
@@ -116,7 +121,7 @@ var getEntertainment = function (lon,lat) {
     .then(function (response) {
         if (response.ok) {
           response.json().then(function (data) {
-            console.log('entertainment.....',data);
+            console.log(cityNameInputEl.value,'entertainment.....',data);
           });
         } else {
           alert('Error: ' + response.statusText);
@@ -137,7 +142,7 @@ var getLeisure = function (lon,lat) {
     .then(function (response) {
         if (response.ok) {
           response.json().then(function (data) {
-            console.log('leisure.....',data);
+            console.log(cityNameInputEl.value,'leisure.....',data);
           });
         } else {
           alert('Error: ' + response.statusText);
@@ -158,7 +163,7 @@ var getNatural = function (lon,lat) {
     .then(function (response) {
         if (response.ok) {
           response.json().then(function (data) {
-            console.log('natural.....',data);
+            console.log(cityNameInputEl.value,'natural.....',data);
           });
         } else {
           alert('Error: ' + response.statusText);
@@ -179,7 +184,7 @@ var getTourismSight = function (lon,lat) {
     .then(function (response) {
         if (response.ok) {
           response.json().then(function (data) {
-            console.log('tourism sights.....',data);
+            console.log(cityNameInputEl.value,'tourism sights.....',data);
           });
         } else {
           alert('Error: ' + response.statusText);
@@ -200,7 +205,7 @@ var getTourismAttraction = function (lon,lat) {
     .then(function (response) {
         if (response.ok) {
           response.json().then(function (data) {
-            console.log('tourism attraction.....',data);
+            console.log(cityNameInputEl.value,'tourism attraction.....',data);
           });
         } else {
           alert('Error: ' + response.statusText);
@@ -208,4 +213,19 @@ var getTourismAttraction = function (lon,lat) {
       });
         
 };
+
+//Saves User Searches and Displays them using list elements
+function saveCityAndDate(){
+
+  var savedCityAndDate = cityNameInputEl.value + ", " + userDateEl.value;
+  savedCityAndDateArr.push(savedCityAndDate);
+  localStorage.setItem('savedCityAndDate',JSON.stringify(savedCityAndDateArr));
+
+  for(var i=0; i<savedCityAndDateArr.length; i++){
+      var userSearch = document.createElement('li');
+      userSearch.textContent = savedCityAndDateArr[i];
+      userSearchList.prepend(userSearch);
+  };
+};
+
 userFormEl.addEventListener('submit', formSubmitHandler);
