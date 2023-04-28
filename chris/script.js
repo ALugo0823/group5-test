@@ -9,6 +9,8 @@ var savedCityAndDateArr = JSON.parse(localStorage.getItem('savedCityAndDate')) |
 //Variable to create list element to display user searches
 var userSearchList = document.createElement('ul');
 userFormEl.append(userSearchList);
+var displayResults = document.createElement('div');
+userSearchList.append(displayResults)
 
 //Function to take user input and call ticketmaster API "getEvents()" and geoapify APIs
 var formSubmitHandler = function (event) {
@@ -60,7 +62,7 @@ var getCityID = function (city) {
         getRestaurants(lon,lat);
         getTourismAttraction(lon,lat);
         getTourismSight(lon,lat);
-        getNatural(lon,lat);
+        // getNatural(lon,lat);
         getLeisure(lon,lat);
         getEntertainment(lon,lat);
 
@@ -74,7 +76,7 @@ var getCityID = function (city) {
 //Gets City Events
 var getEvents = function (date,city) {
 
-  var ticketMasterURL = 'https://app.ticketmaster.com/discovery/v2/events?apikey=35xNq6EDPwVNDTF6qYDV8EAALW4qm2rn&locale=*&startDateTime='+ date + 'T11:49:00Z&city='+ city;
+  var ticketMasterURL = 'https://app.ticketmaster.com/discovery/v2/events?apikey=35xNq6EDPwVNDTF6qYDV8EAALW4qm2rn&locale=*&startDateTime='+ date + 'T11:49:00Z&city='+ city + '&size=5';
 
 fetch(ticketMasterURL)
     .then(function (response) {
@@ -94,13 +96,19 @@ var getRestaurants = function (lon,lat) {
         method: 'GET',
     };
 
-    var geoapifyURL = 'https://api.geoapify.com/v2/places?categories=catering.restaurant&bias=proximity:'+ lon + ',' + lat +'&apiKey=ce388ccf1ac54e96bd36e33be906821a';
+    var geoapifyURL = 'https://api.geoapify.com/v2/places?categories=catering.restaurant&bias=proximity:'+ lon + ',' + lat +'&limit=5&apiKey=ce388ccf1ac54e96bd36e33be906821a';
 
     fetch(geoapifyURL, requestOptions)
     .then(function (response) {
         if (response.ok) {
           response.json().then(function (data) {
             console.log(cityNameInputEl.value,'restaurants.....',data);
+             
+            for (var i=0; i<data.features.length; i++){
+              var cityResults = data.features[i].properties.address_line1;
+              cityResults.textContent = document.createElement('a');
+              displayResults.append(cityResults);
+            }
           });
         } else {
           alert('Error: ' + response.statusText);
@@ -115,13 +123,19 @@ var getEntertainment = function (lon,lat) {
         method: 'GET',
     };
 
-    var geoapifyURL = 'https://api.geoapify.com/v2/places?categories=entertainment&bias=proximity:'+ lon + ',' + lat +'&apiKey=ce388ccf1ac54e96bd36e33be906821a';
+    var geoapifyURL = 'https://api.geoapify.com/v2/places?categories=entertainment&bias=proximity:'+ lon + ',' + lat +'&limit=5&apiKey=ce388ccf1ac54e96bd36e33be906821a';
 
     fetch(geoapifyURL, requestOptions)
     .then(function (response) {
         if (response.ok) {
           response.json().then(function (data) {
             console.log(cityNameInputEl.value,'entertainment.....',data);
+
+            for (var i=0; i<data.features.length; i++){
+              var cityResults = data.features[i].properties.name;
+              cityResults.textContent = document.createElement('a')
+              displayResults.append(cityResults)
+            }
           });
         } else {
           alert('Error: ' + response.statusText);
@@ -136,13 +150,18 @@ var getLeisure = function (lon,lat) {
         method: 'GET',
     };
 
-    var geoapifyURL = 'https://api.geoapify.com/v2/places?categories=leisure&bias=proximity:'+ lon + ',' + lat +'&apiKey=ce388ccf1ac54e96bd36e33be906821a';
+    var geoapifyURL = 'https://api.geoapify.com/v2/places?categories=leisure&bias=proximity:'+ lon + ',' + lat +'&limit=5&apiKey=ce388ccf1ac54e96bd36e33be906821a';
 
     fetch(geoapifyURL, requestOptions)
     .then(function (response) {
         if (response.ok) {
           response.json().then(function (data) {
             console.log(cityNameInputEl.value,'leisure.....',data);
+            for (var i=0; i<data.features.length; i++){
+              var cityResults = data.features[i].properties.address_line1;
+              cityResults.textContent = document.createElement('a');
+              displayResults.append(cityResults);
+            }
           });
         } else {
           alert('Error: ' + response.statusText);
@@ -157,13 +176,18 @@ var getNatural = function (lon,lat) {
         method: 'GET',
     };
 
-    var geoapifyURL = 'https://api.geoapify.com/v2/places?categories=natural&bias=proximity:'+ lon + ',' + lat +'&apiKey=ce388ccf1ac54e96bd36e33be906821a';
+    var geoapifyURL = 'https://api.geoapify.com/v2/places?categories=natural&bias=proximity:'+ lon + ',' + lat +'&limit=5&apiKey=ce388ccf1ac54e96bd36e33be906821a';
 
     fetch(geoapifyURL, requestOptions)
     .then(function (response) {
         if (response.ok) {
           response.json().then(function (data) {
             console.log(cityNameInputEl.value,'natural.....',data);
+            for (var i=0; i<data.features.length; i++){
+              var cityResults = data.features[i].properties.address_line1;
+              cityResults.textContent = document.createElement('a');
+              displayResults.append(cityResults);
+            }
           });
         } else {
           alert('Error: ' + response.statusText);
@@ -178,13 +202,18 @@ var getTourismSight = function (lon,lat) {
         method: 'GET',
     };
 
-    var geoapifyURL = 'https://api.geoapify.com/v2/places?categories=tourism.sights&bias=proximity:'+ lon + ',' + lat +'&apiKey=ce388ccf1ac54e96bd36e33be906821a';
+    var geoapifyURL = 'https://api.geoapify.com/v2/places?categories=tourism.sights&bias=proximity:'+ lon + ',' + lat +'&limit=5&apiKey=ce388ccf1ac54e96bd36e33be906821a';
 
     fetch(geoapifyURL, requestOptions)
     .then(function (response) {
         if (response.ok) {
           response.json().then(function (data) {
             console.log(cityNameInputEl.value,'tourism sights.....',data);
+            for (var i=0; i<data.features.length; i++){
+              var cityResults = data.features[i].properties.address_line1;
+              cityResults.textContent = document.createElement('a');
+              displayResults.append(cityResults);
+            }
           });
         } else {
           alert('Error: ' + response.statusText);
@@ -199,13 +228,18 @@ var getTourismAttraction = function (lon,lat) {
         method: 'GET',
     };
 
-    var geoapifyURL = 'https://api.geoapify.com/v2/places?categories=tourism.attraction&bias=proximity:'+ lon + ',' + lat +'&apiKey=ce388ccf1ac54e96bd36e33be906821a';
+    var geoapifyURL = 'https://api.geoapify.com/v2/places?categories=tourism.attraction&bias=proximity:'+ lon + ',' + lat +'&limit=5&apiKey=ce388ccf1ac54e96bd36e33be906821a';
 
     fetch(geoapifyURL, requestOptions)
     .then(function (response) {
         if (response.ok) {
           response.json().then(function (data) {
             console.log(cityNameInputEl.value,'tourism attraction.....',data);
+            for (var i=0; i<data.features.length; i++){
+              var cityResults = data.features[i].properties.address_line1;
+              cityResults.textContent = document.createElement('a');
+              displayResults.append(cityResults);
+            }
           });
         } else {
           alert('Error: ' + response.statusText);
@@ -229,3 +263,5 @@ function saveCityAndDate(){
 };
 
 userFormEl.addEventListener('submit', formSubmitHandler);
+// Featured Cities
+//Phx, Houston, Las Vegas Miami, New York, Yellowstone
