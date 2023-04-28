@@ -21,7 +21,7 @@ var formSubmitHandler = function (event) {
 
     //Passes user input as argument to functions
     if (cityName&&userDate){
-        getEvents(userDate,cityName);
+        // getEvents(userDate,cityName);
         getCityID(cityName);
         saveCityAndDate();
     } else {
@@ -62,7 +62,7 @@ var getCityID = function (city) {
         getRestaurants(lon,lat);
         getTourismAttraction(lon,lat);
         getTourismSight(lon,lat);
-        // getNatural(lon,lat);
+        // // getNatural(lon,lat);
         getLeisure(lon,lat);
         getEntertainment(lon,lat);
 
@@ -252,8 +252,14 @@ var getTourismAttraction = function (lon,lat) {
 function saveCityAndDate(){
 
   var savedCityAndDate = cityNameInputEl.value + ", " + userDateEl.value;
+  if (savedCityAndDateArr){
+    localStorage.removeItem('saveCityAndDate');
+    // savedCityAndDateArr.push(savedCityAndDate);
+    // localStorage.setItem('savedCityAndDate',JSON.stringify(savedCityAndDateArr));
+  }
   savedCityAndDateArr.push(savedCityAndDate);
   localStorage.setItem('savedCityAndDate',JSON.stringify(savedCityAndDateArr));
+
 
   for(var i=0; i<savedCityAndDateArr.length; i++){
       var userSearch = document.createElement('li');
