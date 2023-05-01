@@ -8,9 +8,30 @@ var userDateEl = document.getElementById('event-date')
 var savedCityAndDateArr = JSON.parse(localStorage.getItem('savedCityAndDate')) || [];
 //Variable to create list element to display user searches
 var userSearchList = document.createElement('ul');
+//NEED TO FIND PROPER PLACE TO APPEND CITY SEARCH LIST HERE
 userFormEl.append(userSearchList);
+//Variable to store ul for each type of search
 var displayResults = document.createElement('div');
-userSearchList.append(displayResults)
+//NEED TO FIND PROPER PLACE TO APPEND FETCH RESULTS HERE
+userSearchList.append(displayResults);
+//List to display Events
+var displayEvents = document.createElement('ul');
+displayResults.append(displayEvents);
+//List to display Restaurants
+var displayRestaurants = document.createElement('ul');
+displayResults.append(displayRestaurants);
+//List to display Entertainment
+var displayEntertainment = document.createElement('ul');
+displayResults.append(displayEntertainment);
+//List to display Leisure
+var displayLeisure = document.createElement('ul');
+displayResults.append(displayLeisure);
+//List to display Tourism Sights
+var displayTourismSights = document.createElement('ul');
+displayResults.append(displayTourismSights);
+//List to display Tourism Attractions
+var displayAttractions = document.createElement('ul');
+displayResults.append(displayAttractions);
 
 //Function to take user input and call ticketmaster API "getEvents()" and geoapify APIs
 var formSubmitHandler = function (event) {
@@ -21,7 +42,7 @@ var formSubmitHandler = function (event) {
 
     //Passes user input as argument to functions
     if (cityName&&userDate){
-        // getEvents(userDate,cityName);
+        getEvents(userDate,cityName);
         getCityID(cityName);
         saveCityAndDate();
     } else {
@@ -83,6 +104,17 @@ fetch(ticketMasterURL)
       if (response.ok) {
         response.json().then(function (data) {
           console.log( city,'events',date,'........',data);
+
+          for (var i=0; i<data._embedded.events.length; i++){
+            var cityResultsName = data._embedded.events[i].name;
+            cityResultsName.textContent = document.createElement('a');
+            displayEvents.append(cityResultsName);
+
+            var cityResultsURL = data._embedded.events[i].url;
+            cityResultsURL.textContent = document.createElement('a');
+            displayEvents.append(cityResultsURL);
+          }
+          
         });
       } else {
         alert('Error: ' + response.statusText);
@@ -107,7 +139,7 @@ var getRestaurants = function (lon,lat) {
             for (var i=0; i<data.features.length; i++){
               var cityResults = data.features[i].properties.address_line1;
               cityResults.textContent = document.createElement('a');
-              displayResults.append(cityResults);
+              displayRestaurants.append(cityResults);
             }
           });
         } else {
@@ -134,7 +166,7 @@ var getEntertainment = function (lon,lat) {
             for (var i=0; i<data.features.length; i++){
               var cityResults = data.features[i].properties.name;
               cityResults.textContent = document.createElement('a')
-              displayResults.append(cityResults)
+              displayEntertainment.append(cityResults)
             }
           });
         } else {
@@ -160,7 +192,7 @@ var getLeisure = function (lon,lat) {
             for (var i=0; i<data.features.length; i++){
               var cityResults = data.features[i].properties.address_line1;
               cityResults.textContent = document.createElement('a');
-              displayResults.append(cityResults);
+              displayLeisure.append(cityResults);
             }
           });
         } else {
@@ -212,7 +244,7 @@ var getTourismSight = function (lon,lat) {
             for (var i=0; i<data.features.length; i++){
               var cityResults = data.features[i].properties.address_line1;
               cityResults.textContent = document.createElement('a');
-              displayResults.append(cityResults);
+              displayTourismSights.append(cityResults);
             }
           });
         } else {
@@ -238,7 +270,7 @@ var getTourismAttraction = function (lon,lat) {
             for (var i=0; i<data.features.length; i++){
               var cityResults = data.features[i].properties.address_line1;
               cityResults.textContent = document.createElement('a');
-              displayResults.append(cityResults);
+              displayAttractions.append(cityResults);
             }
           });
         } else {
