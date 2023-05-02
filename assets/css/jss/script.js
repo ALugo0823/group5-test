@@ -1,46 +1,40 @@
 //Grabs Form
-var userFormEl = document.getElementById('user-city');
+var userFormEl = document.getElementById('user-input');
 //Grabs User Input City
-var cityNameInputEl = document.getElementById('city-name');
+var cityNameInputEl = document.getElementById('floatingInput');
 //Grabs User Input Date
-var userDateEl = document.getElementById('event-date')
+var userDateEl = document.getElementById('my-date-picker')
 //Variable to access and display info out of localStorage
-var savedCityAndDateArr = JSON.parse(localStorage.getItem('savedCityAndDate')) || [];
+var savedCityAndDateArr = [];
 //Variable to create list element to display user searches
 var userSearchList = document.getElementById('city-searches');
-//NEED TO FIND PROPER PLACE TO APPEND CITY SEARCH LIST HERE
+var events = document.getElementById('events');
+var restaurants = document.getElementById('restaurants');
+var entertainment = document.getElementById('entertainment');
+var leisure = document.getElementById('leisure');
+var sights = document.getElementById('sights');
+var attractions = document.getElementById('attractions');
+
+
 // userFormEl.append(userSearchList);
-//Variable to store ul for each type of search
 // var displayResults = document.createElement('div');
-//NEED TO FIND PROPER PLACE TO APPEND FETCH RESULTS HERE
-// userSearchList.append(displayResults);
-//List to display Events
-var displayEvents = document.getElementById('events');
-//List to display Restaurants
-var displayRestaurants = document.getElementById('restaurants');
-//List to display Entertainment
-var displayEntertainment = document.getElementById('entertainment');
-//List to display Leisure
-var displayLeisure = document.getElementById('leisure');
-//List to display Tourism Sights
-var displayTourismSights = document.getElementById('sights');
-//List to display Attractions
-var displayAttractions = document.getElementById('attractions');
+// userSearchList.append(displayResults)
 
 //Function to take user input and call ticketmaster API "getEvents()" and geoapify APIs
 var formSubmitHandler = function (event) {
     event.preventDefault();
-    clearData();
+    emptyList();
+    savedCityAndDateArr = JSON.parse(localStorage.getItem('savedCityAndDate')) || [];
     var userDate = userDateEl.value.trim();
     var cityName = cityNameInputEl.value.trim();
-
+    console.log(cityName)
     //Passes user input as argument to functions
     if (cityName&&userDate){
         getEvents(userDate,cityName);
         getCityID(cityName);
         saveCityAndDate();
     } else {
-        alert('Please select a city and date')
+        alert('Please select a city and date');
     }
 }
 
@@ -77,7 +71,7 @@ var getCityID = function (city) {
         getRestaurants(lon,lat);
         getTourismAttraction(lon,lat);
         getTourismSight(lon,lat);
-        // // getNatural(lon,lat);
+        // getNatural(lon,lat);
         getLeisure(lon,lat);
         getEntertainment(lon,lat);
 
@@ -98,18 +92,17 @@ fetch(ticketMasterURL)
       if (response.ok) {
         response.json().then(function (data) {
           console.log( city,'events',date,'........',data);
-
-          for (var i=0; i<data._embedded.events.length; i++){
-            cityResultsName = data._embedded.events[i].name;
+          for (var i=0; i<data.features.length; i++){
+            var cityResultsName = data._embedded.events[i].name;
             cityResultsName.textContent = document.createElement('a');
-            displayEvents.append(cityResultsName);
-
+            events.append(cityResultsName);
             var cityResultsURL = data._embedded.events[i].url;
             cityResultsURL.textContent = document.createElement('a');
-            displayEvents.append(cityResultsURL);
+            events.append(cityResultsURL);
           }
           
-        });
+        }
+        );
       } else {
         alert('Error: ' + response.statusText);
       }
@@ -133,7 +126,7 @@ var getRestaurants = function (lon,lat) {
             for (var i=0; i<data.features.length; i++){
               var cityResults = data.features[i].properties.address_line1;
               cityResults.textContent = document.createElement('a');
-              displayRestaurants.append(cityResults);
+              restaurants.append(cityResults);
             }
           });
         } else {
@@ -159,8 +152,8 @@ var getEntertainment = function (lon,lat) {
 
             for (var i=0; i<data.features.length; i++){
               var cityResults = data.features[i].properties.name;
-              cityResults.textContent = document.createElement('a');
-              displayEntertainment.append(cityResults);
+              cityResults.textContent = document.createElement('a')
+              entertainment.append(cityResults)
             }
           });
         } else {
@@ -186,7 +179,7 @@ var getLeisure = function (lon,lat) {
             for (var i=0; i<data.features.length; i++){
               var cityResults = data.features[i].properties.address_line1;
               cityResults.textContent = document.createElement('a');
-              displayLeisure.append(cityResults);
+              leisure.append(cityResults);
             }
           });
         } else {
@@ -197,30 +190,30 @@ var getLeisure = function (lon,lat) {
 };
 
 //Gets Nature recommendations based off proximity
-var getNatural = function (lon,lat) {
-    var requestOptions = {
-        method: 'GET',
-    };
+// var getNatural = function (lon,lat) {
+//     var requestOptions = {
+//         method: 'GET',
+//     };
 
-    var geoapifyURL = 'https://api.geoapify.com/v2/places?categories=natural&bias=proximity:'+ lon + ',' + lat +'&limit=5&apiKey=ce388ccf1ac54e96bd36e33be906821a';
+//     var geoapifyURL = 'https://api.geoapify.com/v2/places?categories=natural&bias=proximity:'+ lon + ',' + lat +'&limit=5&apiKey=ce388ccf1ac54e96bd36e33be906821a';
 
-    fetch(geoapifyURL, requestOptions)
-    .then(function (response) {
-        if (response.ok) {
-          response.json().then(function (data) {
-            console.log(cityNameInputEl.value,'natural.....',data);
-            for (var i=0; i<data.features.length; i++){
-              var cityResults = data.features[i].properties.address_line1;
-              cityResults.textContent = document.createElement('a');
-              displayResults.append(cityResults);
-            }
-          });
-        } else {
-          alert('Error: ' + response.statusText);
-        }
-      });
+//     fetch(geoapifyURL, requestOptions)
+//     .then(function (response) {
+//         if (response.ok) {
+//           response.json().then(function (data) {
+//             console.log(cityNameInputEl.value,'natural.....',data);
+//             for (var i=0; i<data.features.length; i++){
+//               var cityResults = data.features[i].properties.address_line1;
+//               cityResults.textContent = document.createElement('a');
+//               displayResults.append(cityResults);
+//             }
+//           });
+//         } else {
+//           alert('Error: ' + response.statusText);
+//         }
+//       });
         
-};
+// };
 
 //Gets Tourism sights recommendations based off proximity
 var getTourismSight = function (lon,lat) {
@@ -238,7 +231,7 @@ var getTourismSight = function (lon,lat) {
             for (var i=0; i<data.features.length; i++){
               var cityResults = data.features[i].properties.address_line1;
               cityResults.textContent = document.createElement('a');
-              displayTourismSights.append(cityResults);
+              sights.append(cityResults);
             }
           });
         } else {
@@ -264,7 +257,7 @@ var getTourismAttraction = function (lon,lat) {
             for (var i=0; i<data.features.length; i++){
               var cityResults = data.features[i].properties.address_line1;
               cityResults.textContent = document.createElement('a');
-              displayAttractions.append(cityResults);
+              attractions.append(cityResults);
             }
           });
         } else {
@@ -278,14 +271,8 @@ var getTourismAttraction = function (lon,lat) {
 function saveCityAndDate(){
 
   var savedCityAndDate = cityNameInputEl.value + ", " + userDateEl.value;
-  if (savedCityAndDateArr){
-    localStorage.removeItem('saveCityAndDate');
-    // savedCityAndDateArr.push(savedCityAndDate);
-    // localStorage.setItem('savedCityAndDate',JSON.stringify(savedCityAndDateArr));
-  }
   savedCityAndDateArr.push(savedCityAndDate);
   localStorage.setItem('savedCityAndDate',JSON.stringify(savedCityAndDateArr));
-
 
   for(var i=0; i<savedCityAndDateArr.length; i++){
       var userSearch = document.createElement('li');
@@ -294,16 +281,9 @@ function saveCityAndDate(){
   };
 };
 
-function clearData(){
-  console.log('in clearData')
-  userSearchList.innerHTML = "";
-  displayEvents.innerHTML = "";
-  displayRestaurants.innerHTML = "";
-  displayEntertainment.innerHTML = "";
-  displayLeisure.innerHTML = "";
-  displayTourismSights.innerHTML = "";
-  displayAttractions.innerHTML = "";
-}
+function emptyList () {
+userSearchList.innerHTML = "";
+};
 
 userFormEl.addEventListener('submit', formSubmitHandler);
 // Featured Cities
