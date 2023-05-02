@@ -15,23 +15,17 @@ var displayResults = document.createElement('div');
 //NEED TO FIND PROPER PLACE TO APPEND FETCH RESULTS HERE
 userSearchList.append(displayResults);
 //List to display Events
-var displayEvents = document.createElement('ul');
-displayResults.append(displayEvents);
+var displayEvents = document.getElementById('events');
 //List to display Restaurants
-var displayRestaurants = document.createElement('ul');
-displayResults.append(displayRestaurants);
+var displayRestaurants = document.getElementById('restaurants');
 //List to display Entertainment
-var displayEntertainment = document.createElement('ul');
-displayResults.append(displayEntertainment);
+var displayEntertainment = document.getElementById('entertainment');
 //List to display Leisure
-var displayLeisure = document.createElement('ul');
-displayResults.append(displayLeisure);
+var displayLeisure = document.getElementById('leisure');
 //List to display Tourism Sights
-var displayTourismSights = document.createElement('ul');
-displayResults.append(displayTourismSights);
-//List to display Tourism Attractions
-var displayAttractions = document.createElement('ul');
-displayResults.append(displayAttractions);
+var displayTourismSights = document.getElementById('sights');
+//List to display Attractions
+var displayAttractions = document.getElementById('attractions');
 
 //Function to take user input and call ticketmaster API "getEvents()" and geoapify APIs
 var formSubmitHandler = function (event) {
@@ -106,7 +100,7 @@ fetch(ticketMasterURL)
           console.log( city,'events',date,'........',data);
 
           for (var i=0; i<data._embedded.events.length; i++){
-            var cityResultsName = data._embedded.events[i].name;
+            cityResultsName = data._embedded.events[i].name;
             cityResultsName.textContent = document.createElement('a');
             displayEvents.append(cityResultsName);
 
@@ -165,8 +159,8 @@ var getEntertainment = function (lon,lat) {
 
             for (var i=0; i<data.features.length; i++){
               var cityResults = data.features[i].properties.name;
-              cityResults.textContent = document.createElement('a')
-              displayEntertainment.append(cityResults)
+              cityResults.textContent = document.createElement('a');
+              displayEntertainment.append(cityResults);
             }
           });
         } else {
