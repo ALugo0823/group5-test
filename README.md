@@ -7,8 +7,8 @@ Got a trip coming up? Need any ideas on sprucing up your trip? Well look no furt
 N/A
 
 ## Usage
-Users only need a computer, mobile device, or tablet with an internet connection.
-Deployed website URL:
+Users only need a computer with an internet connection, and a city in mind!
+Deployed website URL: https://alugo0823.github.io/travel-guide-api/
 
 ## Built with
 * HTML
