@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="bootstrap.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <title>City Capers</title>
+  <link rel="icon" type="image/png" href="./citys.webp">
+</head>
+
+<body>
+  <!-- added a header -->
+  <header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pin-map" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M3.1 11.2a.5.5 0 0 1 .4-.2H6a.5.5 0 0 1 0 1H3.75L1.5 15h13l-2.25-3H10a.5.5 0 0 1 0-1h2.5a.5.5 0 0 1 .4.2l3 4a.5.5 0 0 1-.4.8H.5a.5.5 0 0 1-.4-.8l3-4z"/>
+          <path fill-rule="evenodd" d="M8 1a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999z"/>
+        </svg>        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Featured Cities</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="#">About us</a> -->
+            </li>
+            <!-- <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="row no-margin-bottom">
+      <div class="card">
+        <div class="card-panel center-align" id="title">
+          <img id="logo" src="citys.webp" style="width: 100%;">
+
+          <h1 id="site-name" style="clear: right;">City Capers</h1>
+            <h5>#1 travel guide</h5>
+          <span id="ticketmaster">powered by <img id="tm-logo" src="./tm-logo.png"
+              style="width: 7em; height: 1em"></span>
+            
+              <!--sign in with bootstrap-->
+              <div class="modal-content rounded-4 shadow">
+                <div class="modal-header p-5 pb-4 border-bottom-0">
+                  <h1 class="fw-bold mb-0 fs-2">Sign in</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+          
+                <div class="modal-body p-5 pt-0">
+                  <form class="">
+                    <div class="form-floating mb-3">
+                      <input type="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com">
+                      <label for="floatingInput">Email address</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password">
+                      <label for="floatingPassword">Password</label>
+                    </div>
+                    <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Login</button>
+                    <small class="text-body-secondary">By clicking Sign in, you agree to the terms of use.</small>
+                    <hr class="my-4">
+                  </form>
+                </div>
+              </div>
+              <!--end of bootstrap signin-->
+          
+        <!--back button--</div>
+      </div>
+      <div id="back">
+        <a id="back-btn" class="btn-flat">BACK</a>
+      </div>-->
+      <div class="row no-margin-bottom">
+        <div class="col s12">
+          <div class="card" id="welcome">
+            <div class="card-content">
+
+
+              <!--change background box with bootstrap-->
+              <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+                <div class="container-fluid py-5">
+                  <h1 class="display-5 fw-bold">Featured Cities</h1>
+                  <p class="col-md-10 fs-4">Select a city below to find out what's going on in the area. <br> Click on a city to find out what's happening in your neck of the woods.</p>
+                  <div class="card-group">
+                    <div class="card">
+                      <img src="arizona.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Phoenix</h5>
+                        <p class="card-text">Experience outdoor adventure, high culture and relaxing resorts.</p>
+                        <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                          Places to go in city
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="https://www.yelp.com/search?find_desc=restaurants&find_loc=Phoenix%2C+AZ">Restaurants</a></li>
+                          <li><a class="dropdown-item" href="https://www.barpx.com/best-bars-in-phoenix/#:~:text=10%20Best%20Phoenix%20Bars%201%20UnderTow%20Exotic%20craft,Grand%20...%208%20Stardust%20Pinbar%20...%20More%20items">Bars</a></li>
+                          <li><a class="dropdown-item" href="https://www.yelp.com/search?cflt=hiking&find_loc=Phoenix%2C+AZ#:~:text=The%20Best%2010%20Hiking%20near%20me%20in%20Phoenix%2C,8.%20Cholla%20Trail%2089%20Hiking%20...%20More%20items">Hiking</a></li>
+                          <li><a class="dropdown-item" href="https://www.ticketmaster.com/discover/concerts/phoenix">Local events</a></li>
+                        </ul>
+                      </div>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <img src="houstoncitylights.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Houston</h5>
+                        <p class="card-text"> The cosmopolitan destination, filled with world-class dining, arts, hotels, shopping and nightlife.</p>
+                        <div class="btn-group" role="group">
+                          <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Places to go in city
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="https://www.yelp.com/search?cflt=restaurants&find_loc=Houston%2C+TX">Restaurants</a></li>
+                            <li><a class="dropdown-item" href="https://www.yelp.com/search?cflt=bars&find_loc=Houston%2C+TX#:~:text=The%20Best%2010%20Bars%20near%20me%20in%20Houston%2C,8.%20E2%20Ultra%20Lounge%208%20...%20More%20items">Bars</a></li>
+                            <li><a class="dropdown-item" href="https://www.yelp.com/search?find_desc=hiking+trails&find_loc=Houston%2C+TX#:~:text=Best%20hiking%20trails%20Near%20Me%20in%20Houston%2C%20TX,Sandy%20Reed%20Memorial%20Trail%2010%20...%20More%20items">Hiking</a></li>
+                            <li><a class="dropdown-item" href="https://www.ticketmaster.com/discover/arts-theater/houston">Local events</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <img src="lasvegas.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Las Vegas</h5>
+                        <p class="card-text"> Best known for its luxurious Casinos, world-class hotels, and its happening nightlife.</p>
+                        <div class="btn-group" role="group">
+                          <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Places to go in city
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="https://www.yelp.com/search?cflt=restaurants&find_loc=Las+Vegas%2C+NV">Restaurants</a></li>
+                            <li><a class="dropdown-item" href="https://www.yelp.com/search?find_desc=Bars&find_loc=Las+Vegas%2C+NV#:~:text=Best%20Bars%20near%20me%20in%20Las%20Vegas%2C%20Nevada,8.%20The%20Chandelier%201733%20Lounges%20...%20More%20items">Bars</a></li>
+                            <li><a class="dropdown-item" href="https://www.yelp.com/search?cflt=hiking&find_loc=Las+Vegas%2C+NV#:~:text=The%20Best%2010%20Hiking%20near%20me%20in%20Las,Cliff%20Shadows%20Trailhead%2013%20Hiking%20...%20More%20items">Hiking</a></li>
+                            <li><a class="dropdown-item" href="https://www.ticketmaster.com/discover/concerts/las-vegas">Local events</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-group">
+                    <div class="card">
+                      <img src="miami.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Miami</h5>
+                        <p class="card-text">Unique and laid-back beaches with vibrant nightlife.</p>
+                        <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                          Places to go in city
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="https://www.yelp.com/search?cflt=restaurants&find_loc=Las+Vegas%2C+NV">Restaurants</a></li>
+                          <li><a class="dropdown-item" href="https://www.yelp.com/search?cflt=bars&find_loc=Las+Vegas%2C+NV#:~:text=The%20Best%2010%20Bars%20near%20me%20in%20Las,8.%20The%20Chandelier%201733%20Lounges%20...%20More%20items">Bars</a></li>
+                          <li><a class="dropdown-item" href="https://www.yelp.com/search?cflt=hiking&find_loc=Las+Vegas%2C+NV#:~:text=The%20Best%2010%20Hiking%20near%20me%20in%20Las,Cliff%20Shadows%20Trailhead%2013%20Hiking%20...%20More%20items">Hiking</a></li>
+                          <li><a class="dropdown-item" href="https://www.ticketmaster.com/discover/concerts/las-vegas">Local events</a></li>
+                        </ul>
+                      </div>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <img src="newyork.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">New York</h5>
+                        <p class="card-text">The financial and cultural hub of the world, significantly influencing commerce, entertainment, research, technology, and tourism.</p>
+                        <div class="btn-group" role="group">
+                          <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Places to go in city
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="https://www.yelp.com/search?find_desc=Restaurants&find_loc=New+York%2C+NY">Restaurants</a></li>
+                            <li><a class="dropdown-item" href="https://www.yelp.com/search?cflt=bars&find_loc=New+York%2C+NY#:~:text=The%20Best%2010%20Bars%20near%20me%20in%20New,8.%20Signal%20154%20Korean%20Pubs%20...%20More%20items">Bars</a></li>
+                            <li><a class="dropdown-item" href="https://www.yelp.com/search?cflt=hiking&find_loc=New+York%2C+NY#:~:text=The%20Best%2010%20Hiking%20in%20New%20York%2C%20New,Lakes%20Nature%20Preserve%2012%20Hiking%20...%20More%20items">Hiking</a></li>
+                            <li><a class="dropdown-item" href="https://www.ticketmaster.com/discover/concerts/new-york">Local events</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <img src="wyoming.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Cheyenne</h5>
+                        <p class="card-text">Cowboys, trains, and the great outdoors.</p>
+                        <div class="btn-group" role="group">
+                          <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Places to go in city
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="https://www.yelp.com/search?cflt=restaurants&find_loc=Cheyenne%2C+WY">Restaurants</a></li>
+                            <li><a class="dropdown-item" href="https://www.yelp.com/search?find_desc=bars&find_loc=Cheyenne%2C+WY#:~:text=Best%20bars%20near%20me%20in%20Cheyenne%2C%20Wyoming%201,Grill%2073%20Country%20Dance%20Halls%20...%20More%20items">Bars</a></li>
+                            <li><a class="dropdown-item" href="https://www.yelp.com/search?find_desc=Hiking+Trails&find_loc=Cheyenne%2C+WY#:~:text=Best%20Hiking%20Trails%20Near%20Me%20in%20Cheyenne%2C%20WY,Open%20Space%204.7%20%283%20reviews%29%20...%20More%20items">Hiking</a></li>
+                            <li><a class="dropdown-item" href="https://www.ticketmaster.com/Cheyenne-Civic-Center-tickets-Cheyenne/venue/246783?irgwc=1&clickid=WqyxtzQkExyNWuLUdnXccTazUkAVGRRYES4DRQ0&camefrom=CFC_BUYAT_390418&impradid=390418&REFERRAL_ID=tmfeedbuyat390418&wt.mc_id=aff_BUYAT_390418&utm_source=390418-Wildfire%20Systems&impradname=Wildfire%20Systems&utm_medium=affiliate&ircid=4272">Local events</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--end of second collumn-->
+                </div>
+              </div>
+               <!--pick a city buttons-->
+      <form id="user-input">
+               <h1 class="display-5 fw-bold">Find my city</h1>
+        <div class="col-md-6 col-xxl-4 my-5 mx-auto">
+          <div class="d-grid gap-2">
+            <div class="form-floating mb-3">
+              <label for="floatingInput">Pick a City</label>
+              <input type="text" class="form-control rounded-3" id="city-name" placeholder="Pick a city">
+        </div>
+        <!--end of pick a city-->
+
+                <!--end of all bootstrap-->
+
+                <!--datepicker- youtube link: https://youtu.be/VCklKwo2TmQ-->
+                <fieldset>
+                  <legend>Pick your date</legend>
+                  <label for="my-date-picker">Date:
+                    <input id="my-date-picker" type="date" min="2022-12-31" name="2040-02-01" value="">
+                      <!--to mark special events --<option value="2023-01-05(date of event)" label="(event name)"></option>-->
+                  </label>
+                </fieldset>
+                <!--end of datepicker-->
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+        <button class="btn btn-primary" type="submit">Go!</button>
+      </div>
+<div class="new-search container rounded-4 shadow m5" id="previous-searches">
+        <h2>Previous Searches:</h2>
+        <ul id="city-searches"></ul>
+      </div>
+      </form>
+<div id="search-results">
+    <h1 class="new-search rounded-4 shadow m5" id="results-title">placeholder</h1>
+
+
+   <div class="new-search container rounded-4 shadow">
+      <h2 id="city-events">event placeholder</h2>
+     <ul id="events"></ul>
+    </div>
+
+    <div class="new-search container rounded-4 shadow">
+      <h2 id="city-restaurants">restaurant placeholder</h2>
+      <ul id="restaurants"></ul>
+    </div>
+
+    <div class="new-search container rounded-4 shadow">
+      <h2 id="city-entertainment">entertainment placeholder</h2>
+      <ul id="entertainment"></ul>
+    </div>
+
+    <div class="new-search container rounded-4 shadow">
+      <h2 id="city-leisure">leisure placeholder</h2>
+      <ul id="leisure"></ul>
+    </div>
+
+    <div class="new-search container rounded-4 shadow">
+      <h2 id="city-sights">sights placeholder</h2>
+      <ul id="sights"></ul>
+    </div>
+  
+  <div class="new-search container rounded-4 shadow">  
+  <h2 id="city-attractions">attractions placeholder</h2>
+  <ul id="attractions"></ul>
+  </div>
+</div>
+
+
+<!-- ADDED FOOTER -->
+<footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
+  <div class="container text-center">
+    <small>City Caper &copy; 2023</small>
+  </div>
+</footer>
+
+
+        <!-- <div id="cty-img">
+          <div ckass="row" id="selection">
+            <div class="col s1 m2">
+              <div class="col s7 m4">
+                <div class="input-field" id="cities">
+                  <select id="select">
+                    <option value="" disabled selected> -- Choose a City --</option>
+                    <option value="1"
+                      data-icon="https://www.pexels.com/photo/padlocks-at-a-love-lock-bridge-in-houston-12902230/">
+                      Houston</option>
+                    <option value="2" data-icon="https://www.pexels.com/photo/horseshoe-bend-arizona-2563733/">
+                      Arizona</option>
+                    <option value="3"
+                      data-icon="https://www.pexels.com/photo/venice-miniature-in-las-vegas-on-sunny-day-6039247/">
+                      Las Vegas</option>
+                    <option value="4"
+                      data-icon="https://www.pexels.com/photo/golden-gate-bridge-san-francisco-1591382/">
+                      SanFrancisco</option>
+                    <option value="5"
+                      data-icon="https://www.pexels.com/photo/vehicles-passing-by-road-in-new-york-2168975/">
+                      New York</option>
+                    <option value="6"
+                      data-icon="https://www.pexels.com/photo/the-upper-yellowstone-falls-in-yellowstone-national-park-wyoming-usa-5339027/">
+                      Wyoming</option>
+                    <option value="7"
+                      data-icon="https://www.pexels.com/photo/lifeguard-building-on-seashore-against-sundown-sky-3773651/">
+                      Miami</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col s1 m2 l2">
+                <a class="btn button" id="random-btn">GO!</a>
+                </div>
+                <div class="col s-1"></div>
+                </div> -->
+
+                <!--select event type-->
+
+                <!-- <div id="options" class="row" style="display: none;">
+                  <div class="col s12 m6" id="options-box">
+                    <div id="selectedCityDiv"></div>
+                    <div id="radio-buttons">
+                      <from action="#">
+                        <p>
+                          <label>
+                            <input name="group1" class="test" type="radio" id="music" />
+                            <span>Music</span>
+                          </label>
+                        </p>
+                        <p>
+                          <label>
+                            <input name="group1" type="radio" id="sports" />
+                            <span>Sports</span>
+                          </label>
+                        </p>
+                        <p>
+                          <label>
+                            <input name="group1" type="radio" id="art" />
+                            <span>Art</span>
+                          </label>
+                        </p>
+                        <p>
+                          <label>
+                            <input type="checkbox" id="dinner" />
+                            <span>Want to add dinner</span>
+                          </label>
+                        </p>
+                      </form>
+                    </div>
+
+                    <span class="btn-flat" id="cancel">CANCEL</span>
+                    <a class="btn-flat modal-trigger right" id="option-confirm" href="#modal1">OK</a>
+                  </div>
+                </div>
+
+
+
+                <div class="cardGoesHere"></div> -->
+
+                <!--search results are displayed here.-->
+
+                <!-- <div class="row" id="results" style="display: none;">
+                  <div class="col s12 m3">
+                    <div class="card">
+                      <div class="card-panel event-esults">
+                        <span id="artist-1" class="event-title truncate"></span><br>
+                        <span id="venue-1"></span><br>
+                        <span id="date-1"></span><br>
+                        <span id="time-1"></span>
+                        <a href="" target="_blank" id="info-1">
+                          <div class="card-image hoverable" id="test">
+                            <img class="event-pic" id="image-1">
+                          </div>
+                        </a>
+
+                        <div class="dinner-plans">
+                          <hr>
+                          <h2>Food Options:</h2>
+                          <span id="restaurant-1" class="bold truncate"></span>
+                          <span class="btn-flat buttons choose" id="left-1">&lt;</span>
+                          select restaurant
+                          <span class="btn-flat buttons choose" id="right-1">&gt;</span><br>
+                          <div>
+                              Price: <span id="price-1" class="cost"></span>
+                          </div><br>
+                          <a class="btn buttons reserve" target="_blank" id="restaurant-info1">Reserve
+                              Table</a>
+                      </div>
+                  </div>
+              </div>
+              </a>
+          </div>
+          <div class="col s12 m3">
+            <div class="card">
+                <div class="card-panel event-results">
+                    <span id="artist-2" class="event-title truncate"></span><br>
+                    <span id="venue-2"></span><br>
+                    <span id="date-2"></span><br>
+                    <span id="time-2"></span>
+                    <a href="" target="_blank" id="info-2">
+                        <div class="card-image hoverable">
+                            <img class="event-pic" id="image-2"></img>
+                        </div>
+                    </a>
+                    <div class="dinner-plans">
+                      <hr>
+                      <h2>Food Options:</h2>
+                      <span id="restaurant-2" class="bold truncate"></span>
+                      <span class="btn-flat buttons choose" id="left-2">&lt;</span>
+                      select restaurant
+                      <span class="btn-flat buttons choose" id="right-2">&gt;</span><br>
+                      <div>
+                          Price: <span id="price-2" class="cost"></span>
+                      </div><br>
+                      <a class="btn buttons reserve" target="_blank" id="restaurant-info2">Reserve
+                          Table</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="col s12 m3">
+        <div class="card">
+            <div class="card-panel event-results">
+                <span id="artist-3" class="event-title truncate"></span><br>
+                <span id="venue-3"></span><br>
+                <span id="date-3"></span><br>
+                <span id="time-3"></span>
+                <a href="" target="_blank" id="info-3"></a>
+                <div class="card-image hoverable">
+                    <img class="event-pic" id="image-3"></img>
+                </div>
+                </a>
+                <div class="dinner-plans">
+                  <hr>
+                  <h2>Food Options:</h2>
+                  <span id="restaurant-3" class="bold truncate"></span>
+                  <span class="btn-flat buttons choose" id="left-3">&lt;</span>
+                  select restaurant
+                  <span class="btn-flat buttons choose" id="right-3">&gt;</span><br>
+                  <div>
+                      Price: <span id="price-3" class="cost"></span>
+                  </div><br>
+                  <a class="btn buttons reserve" target="_blank" id="restaurant-info3">Reserve
+                      Table
+                  </a>
+              </div>
+          </div>
+      </div>
+
+    </div>
+    <div class="col s12 m3">
+        <div class="card">
+            <div class="card-panel event-results">
+                <span id="artist-4" class="event-title truncate"></span><br>
+                <span id="venue-4"></span><br>
+                <span id="date-4"></span><br>
+                <span id="time-4"></span>
+                <a href="" target="_blank" id="info-4">
+                    <div class="card-image hoverable">
+                        <img class="event-pic" id="image-4"></img>
+                    </div>
+                  </a>
+                  <div class="dinner-plans">
+                      <hr>
+                      <h2>Food Options:</h2>
+                      <span id="restaurant-4" class="bold truncate"></span>
+                      <span class="btn-flat buttons choose" id="left-4">&lt;</span>
+                      select restaurant
+                      <span class="btn-flat buttons choose" id="right-4">&gt;</span><br>
+                      <div>
+                          Price: <span id="price-4" class="cost"></span>
+                      </div><br>
+                      <a class="btn buttons reserve" target="_blank" id="restaurant-info4">Reserve
+                          Table</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+</div>
+</div>
+<div id="pages">
+    <a class="btn-flat" id="page-1" style="color:rgb(26, 112, 170)">1</a>&nbsp;<a class="btn-flat"
+        id="page-2">2</a>&nbsp;<a class="btn-flat" id="page-3">3</a>
+</div> -->
+<!-- login form -->
+
+<!-- <div class="container center-align" id="login-form" style="display: none">
+    <div class="z-depth-1 grey lighten-4 row"
+        style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+
+        <form class="col s12" method="post">
+            <div class="row">
+                <div class='col s12'>
+                </div>
+            </div>
+
+            <div class="row">
+              <div class="input-field col s12">
+                  <input type="text" name="username" id="username" />
+                  <label for="username">Enter your username</label>
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="input-field col s12">
+                  <input type="password" name="password" id="password" />
+                  <label for="password">Enter your password</label>
+              </div>
+              <label style="float: right;">
+                  <a href="#!"><b>Forgot Password?</b></a>
+              </label>
+          </div>
+
+          <div class="row">
+            <button type="submit" name="btn_login" class="col s12 btn btn-large"
+                id="login-form-btn">Login</button>
+        </div>
+        <div class="center-align">
+            <a href="#!">Create account</a>
+        </div>
+    </form>
+</div>
+</div> -->
+
+<!-- featured destinations -->
+
+<!-- <div id="featured">
+  <div class="row no-margin-bottom">
+      <div class="label">FEATURED</div>
+      <div class="col s12 m6 xl3">
+          <a href="https://www.visitlasvegas.com/" target="_blank" id="feat-1">
+              <div class="card hoverable">
+                  <div class="card-image">
+                      <img src="https://q-cf.bstatic.com/images/hotel/max1024x768/170/170504164.jpg"
+                          alt="Las Vegas">
+                      <span class="card-title ribbon" id="trip-1">Viva Las Vegas</span>
+                  </div>
+              </div>
+          </a>
+      </div>
+      <div class="col s12 m6 xl3">
+        <a href="https://www.coloradoski.com/" target="_blank" id="feat-2">
+            <div class="card hoverable">
+                <div class="card-image">
+                    <img src="https://images.vailresorts.com/image/upload/c_scale,dpr_3.0,f_auto,q_auto,w_400/v1/Breckenridge/Heros/201902_brk_maguire_yi_7133.jpg"
+                        alt="Breckenridge, Colorado">
+                    <span class="card-title ribbon" id="trip-2">Rocky Mountain High</span>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="col s12 m6 xl3">
+      <a href="https://www.discoverlosangeles.com/things-to-do/the-beginners-guide-to-hollywood"
+          target="_blank" id="feat-3">
+          <div class="card hoverable">
+              <div class="card-image">
+                  <img src="https://www.laweekly.com/wp-content/uploads/2019/05/los-angeles-hates-hollywood-759x500.jpg"
+                      alt="Los Angeles">
+                  <span class="card-title ribbon" id="trip-3">It's Hollywood, Baby</span>
+              </div>
+          </div>
+      </a>
+  </div>
+  <div class="col s12 m6 xl3">
+    <a href="https://www.nfl.com/" target="_blank" id="feat-4">
+        <div class="card hoverable">
+            <div class="card-image">
+                <img src="https://img.bleacherreport.net/img/images/photos/003/840/550/hi-res-451920753732d221297db742d38157fd_crop_north.jpg?h=533&w=800&q=70&crop_x=center&crop_y=top"
+                    alt="NFL">
+                <span class="card-title ribbon" id="trip-4">Hit The Gridiron</span>
+            </div>
+        </div>
+    </a>
+</div>
+</div>
+</div> -->
+<!-- landmarks section-->
+<!-- 
+<div id="landmarks" class="row" style="display: none">
+  <div class="label" id="landmark-city"></div>
+  <div class="col s12 m3">
+      <a href="" target="_blank" id="land-info1">
+          <div class="card hoverable">
+              <div class="card-image">
+                  <img id="land-pic1" src="">
+                  <span class="card-title" id="land-1"></span>
+              </div>
+          </div>
+      </a>
+  </div>
+  <div class="col s12 m3">
+    <a href="" target="_blank" id="land-info2">
+        <div class="card hoverable">
+            <div class="card-image">
+                <img id="land-pic2" src="">
+                <span class="card-title" id="land-2"></span>
+            </div>
+        </div>
+    </a>
+</div>
+<div class="col s12 m3">
+  <a href="" target="_blank" id="land-info3">
+      <div class="card hoverable">
+          <div class="card-image">
+              <img id="land-pic3" src="">
+              <span class="card-title" id="land-3"></span>
+          </div>
+      </div>
+  </a>
+</div>
+<div class="col s12 m3">
+  <a href="" target="_blank" id="land-info4">
+      <div class="card hoverable">
+          <div class="card-image">
+              <img id="land-pic4" src="">
+              <span class="card-title" id="land-4"></span>
+          </div>
+      </div>
+  </a>
+</div>
+</div>
+
+<div id="local-events">
+  <div class="local">IN YOUR AREA </div>
+  <ul class="collection">
+      <li class="collection-item avatar">
+          <div class="local-title">MUSIC</div>
+          <img id="local-music-image" src="" alt="no image available" class="local-images"><br>
+          <span id="local-music" style="font-weight: 700"></span><br>
+          <span id="local-music-venue">Venue </span><br>
+          <span id="local-music-date"> date </span><br>
+          <span id="local-music-time"> time </span><br>
+          <a id="local-music-buy" class="btn-flat buttons local-buy" target="_blank"> buy </a>
+      </li>
+      <li class="collection-item avatar">
+          <div class="local-title">SPORTS</div>
+          <img id="local-sports-image" src="" alt="no image available" class="local-images"><br>
+          <span id="local-sports" style="font-weight: 700"></span><br>
+          <span id="local-sports-venue">Venue </span><br>
+          <span id="local-sports-date"> date </span><br>
+          <span id="local-sports-time"> time </span><br>
+          <a id="local-sports-buy" class="btn-flat buttons local-buy" target="_blank"> buy </a>
+      </li>
+      <li class="collection-item avatar">
+        <div class="local-title">ART</div>
+        <img id="local-art-image" src="" alt="no image available" class="local-images"><br>
+        <span id="local-art" style="font-weight: 700"></span><br>
+        <span id="local-art-venue">Venue </span><br>
+        <span id="local-art-date"> date </span><br>
+        <span id="local-art-time"> time </span><br>
+        <a id="local-art-buy" class="btn-flat buttons local-buy" target="_blank"> buy </a>
+    </li>
+</ul>
+<a id="more" class="btn-flat">SEE MORE RESULTS</a>
+</div> -->
+
+<!-- GO button results -->
+
+<!-- <div id="more-events" class="card">
+  <span id="events" style="font-weight: 700"></span>
+  <div id="map"></div>
+  <div id="events2"></div>
+</div> -->
+
+</div>
+
+<div id="my-modal" class="modal">
+
+  <div class="modal-content error">
+      <h4>OOPS</h4>
+      <h3>Please select a city and a date</h3>
+      <button class="close" data-dismiss="modal">&times;</button>
+  </div>
+    
+</div>        
+
+<script src="bootstrap.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+
+<script src="./chris/script.js"></script>
+</body>
+
+</html>
