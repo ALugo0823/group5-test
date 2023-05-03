@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -101,8 +102,39 @@
 
           </div>
         </div>
+      </div>
+        <button class="btn btn-primary" type="submit">Go!</button>
+      </div>
+      <div id="previous-searches">
+        <h2>Previous Searches:</h2>
+        <ul id="city-searches"></ul>
+      </div>
+      </form>
+<div id="search-results">
+  <h1 id="results-title">placeholder</h1>
 
-        <div id="cty-img">
+  <h2 id="city-events">event placeholder</h2>
+  <ul id="events"></ul>
+
+  <h2 id="city-restaurants">restaurant placeholder</h2>
+  <ul id="restaurants"></ul>
+
+  <h2 id="city-entertainment">entertainment placeholder</h2>
+  <ul id="entertainment"></ul>
+
+  <h2 id="city-leisure">leisure placeholder</h2>
+  <ul id="leisure"></ul>
+
+  <h2 id="city-sights">sights placeholder</h2>
+  <ul id="sights"></ul>
+
+  <h2 id="city-attractions">attractions placeholder</h2>
+  <ul id="attractions"></ul>
+</div>
+      
+
+
+        <!-- <div id="cty-img">
           <div ckass="row" id="selection">
             <div class="col s1 m2">
               <div class="col s7 m4">
@@ -137,11 +169,11 @@
                 <a class="btn button" id="random-btn">GO!</a>
                 </div>
                 <div class="col s-1"></div>
-                </div>
+                </div> -->
 
                 <!--select event type-->
 
-                <div id="options" class="row" style="display: none;">
+                <!-- <div id="options" class="row" style="display: none;">
                   <div class="col s12 m6" id="options-box">
                     <div id="selectedCityDiv"></div>
                     <div id="radio-buttons">
@@ -180,11 +212,11 @@
 
 
 
-                <div class="cardGoesHere"></div>
+                <div class="cardGoesHere"></div> -->
 
                 <!--search results are displayed here.-->
 
-                <div class="row" id="results" style="display: none;">
+                <!-- <div class="row" id="results" style="display: none;">
                   <div class="col s12 m3">
                     <div class="card">
                       <div class="card-panel event-esults">
@@ -308,10 +340,10 @@
 <div id="pages">
     <a class="btn-flat" id="page-1" style="color:rgb(26, 112, 170)">1</a>&nbsp;<a class="btn-flat"
         id="page-2">2</a>&nbsp;<a class="btn-flat" id="page-3">3</a>
-</div>
+</div> -->
 <!-- login form -->
 
-<div class="container center-align" id="login-form" style="display: none">
+<!-- <div class="container center-align" id="login-form" style="display: none">
     <div class="z-depth-1 grey lighten-4 row"
         style="display: inline-block; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
 
@@ -347,11 +379,11 @@
         </div>
     </form>
 </div>
-</div>
+</div> -->
 
 <!-- featured destinations -->
 
-<div id="featured">
+<!-- <div id="featured">
   <div class="row no-margin-bottom">
       <div class="label">FEATURED</div>
       <div class="col s12 m6 xl3">
@@ -400,9 +432,9 @@
     </a>
 </div>
 </div>
-</div>
+</div> -->
 <!-- landmarks section-->
-
+<!-- 
 <div id="landmarks" class="row" style="display: none">
   <div class="label" id="landmark-city"></div>
   <div class="col s12 m3">
@@ -479,15 +511,32 @@
     </li>
 </ul>
 <a id="more" class="btn-flat">SEE MORE RESULTS</a>
-</div>
+</div> -->
 
 <!-- GO button results -->
 
-<div id="more-events" class="card">
+<!-- <div id="more-events" class="card">
   <span id="events" style="font-weight: 700"></span>
   <div id="map"></div>
   <div id="events2"></div>
+</div> -->
+
 </div>
 
+<div id="my-modal" class="modal">
+
+  <div class="modal-content error">
+      <h4>OOPS</h4>
+      <h3>Please select a city and a date</h3>
+      <button class="close" data-dismiss="modal">&times;</button>
+  </div>
+    
+</div>        
+
+<script src="bootstrap.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+
+<script src="./chris/script.js"></script>
 </body>
 </html>
