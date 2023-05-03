@@ -9,14 +9,15 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
   <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="bootstrap.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-  <link rel="stylesheet" href="./develop/cs/style.css">
-  <link rel="stylesheet" href="npm i bootstrap-icons">
-  <title>Travel Guide</title>
-  <link rel="icon" type="image/png" href="citys.webp">
+  <title>Journey Journal Travel Guide</title>
+  <link rel="icon" type="image/png" href="./citys.webp">
 </head>
 
 <body>
+  <!-- added a header -->
   <header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
@@ -57,50 +58,193 @@
       <div class="card">
         <div class="card-panel center-align" id="title">
           <img id="logo" src="citys.webp" style="width: 100%;">
-          <h1 id="site-name" style="clear: right;">Travel Guide</h1>
-          <span id="ticketmaster">Powered by <img id="tm-logo" src="./tm-logo.png"
+
+          <h1 id="site-name" style="clear: right;">Journey Journal</h1>
+            <h5>#1 travel guide</h5>
+          <span id="ticketmaster">powered by <img id="tm-logo" src="./tm-logo.png"
               style="width: 7em; height: 1em"></span>
-          <!-- <a class="btn buttons right" id="login-btn">LOGIN</a> -->
-        </div>
+            
+              <!--sign in with bootstrap-->
+              <div class="modal-content rounded-4 shadow">
+                <div class="modal-header p-5 pb-4 border-bottom-0">
+                  <h1 class="fw-bold mb-0 fs-2">Sign in</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+          
+                <div class="modal-body p-5 pt-0">
+                  <form class="">
+                    <div class="form-floating mb-3">
+                      <input type="email" class="form-control rounded-3" id="floatingInput" placeholder="name@example.com">
+                      <label for="floatingInput">Email address</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                      <input type="password" class="form-control rounded-3" id="floatingPassword" placeholder="Password">
+                      <label for="floatingPassword">Password</label>
+                    </div>
+                    <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Login</button>
+                    <small class="text-body-secondary">By clicking Sign in, you agree to the terms of use.</small>
+                    <hr class="my-4">
+                  </form>
+                </div>
+              </div>
+              <!--end of bootstrap signin-->
+          
+        <!--back button--</div>
       </div>
-      <!-- <div id="back">
+      <div id="back">
         <a id="back-btn" class="btn-flat">BACK</a>
-      </div> -->
-  
-      
+      </div>-->
       <div class="row no-margin-bottom">
         <div class="col s12">
           <div class="card" id="welcome">
             <div class="card-content">
-              <p class="card-title">About To visit</p>
-              <p>Select a city below to find out what's going on in the area. Click GO! to find out what's
-                happening in your neck of the woods.</p>
-              </div>
-            </div>
-            <!-- search bar -->
-            <div class="wrap">
-              <div class="search">
-                 <input type="text" class="searchTerm" placeholder="Where do you want to go?">
-                 <button type="submit" class="searchButton">
-                   <i class="fa fa-search"></i>
-                </button>
-              </div>
-           </div>
-            <!-- FOOTER -->
-      <footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
-          <div class="container text-center">
-            <small>Travel Guide &copy; 2023</small>
-          </div>
-      </footer>
-            
-            <div id="modal1" class="modal">
-              <div class="modal-content error">
-                <div class="center-align">
-                  <h4>OOPS</h4>
-                  <p>You forgot to tell us what you want to do. Go back and make a selection.</p><a href="#!"
-                  class="modal-close btn-flat error" id="modal-ok">OK</a>
 
+
+              <!--change background box with bootstrap-->
+              <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+                <div class="container-fluid py-5">
+                  <h1 class="display-5 fw-bold">Featured Cities</h1>
+                  <p class="col-md-10 fs-4">Select a city below to find out what's going on in the area. <br> Click on a city to find out what's happening in your neck of the woods.</p>
+                  <div class="card-group">
+                    <div class="card">
+                      <img src="arizona.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Phoenix</h5>
+                        <p class="card-text">Experience outdoor adventure, high culture and relaxing resorts.</p>
+                        <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                          Places to go in city
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="https://www.yelp.com/search?find_desc=restaurants&find_loc=Phoenix%2C+AZ">Restaurants</a></li>
+                          <li><a class="dropdown-item" href="https://www.barpx.com/best-bars-in-phoenix/#:~:text=10%20Best%20Phoenix%20Bars%201%20UnderTow%20Exotic%20craft,Grand%20...%208%20Stardust%20Pinbar%20...%20More%20items">Bars</a></li>
+                          <li><a class="dropdown-item" href="https://www.yelp.com/search?cflt=hiking&find_loc=Phoenix%2C+AZ#:~:text=The%20Best%2010%20Hiking%20near%20me%20in%20Phoenix%2C,8.%20Cholla%20Trail%2089%20Hiking%20...%20More%20items">Hiking</a></li>
+                          <li><a class="dropdown-item" href="https://www.ticketmaster.com/discover/concerts/phoenix">Local events</a></li>
+                        </ul>
+                      </div>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <img src="houstoncitylights.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Houston</h5>
+                        <p class="card-text"> The cosmopolitan destination, filled with world-class dining, arts, hotels, shopping and nightlife.</p>
+                        <div class="btn-group" role="group">
+                          <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Places to go in city
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="https://www.yelp.com/search?cflt=restaurants&find_loc=Houston%2C+TX">Restaurants</a></li>
+                            <li><a class="dropdown-item" href="https://www.yelp.com/search?cflt=bars&find_loc=Houston%2C+TX#:~:text=The%20Best%2010%20Bars%20near%20me%20in%20Houston%2C,8.%20E2%20Ultra%20Lounge%208%20...%20More%20items">Bars</a></li>
+                            <li><a class="dropdown-item" href="https://www.yelp.com/search?find_desc=hiking+trails&find_loc=Houston%2C+TX#:~:text=Best%20hiking%20trails%20Near%20Me%20in%20Houston%2C%20TX,Sandy%20Reed%20Memorial%20Trail%2010%20...%20More%20items">Hiking</a></li>
+                            <li><a class="dropdown-item" href="https://www.ticketmaster.com/discover/arts-theater/houston">Local events</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <img src="lasvegas.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Las Vegas</h5>
+                        <p class="card-text"> Best known for its luxurious Casinos, world-class hotels, and its happening nightlife.</p>
+                        <div class="btn-group" role="group">
+                          <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Places to go in city
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="https://www.yelp.com/search?cflt=restaurants&find_loc=Las+Vegas%2C+NV">Restaurants</a></li>
+                            <li><a class="dropdown-item" href="https://www.yelp.com/search?find_desc=Bars&find_loc=Las+Vegas%2C+NV#:~:text=Best%20Bars%20near%20me%20in%20Las%20Vegas%2C%20Nevada,8.%20The%20Chandelier%201733%20Lounges%20...%20More%20items">Bars</a></li>
+                            <li><a class="dropdown-item" href="https://www.yelp.com/search?cflt=hiking&find_loc=Las+Vegas%2C+NV#:~:text=The%20Best%2010%20Hiking%20near%20me%20in%20Las,Cliff%20Shadows%20Trailhead%2013%20Hiking%20...%20More%20items">Hiking</a></li>
+                            <li><a class="dropdown-item" href="https://www.ticketmaster.com/discover/concerts/las-vegas">Local events</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-group">
+                    <div class="card">
+                      <img src="miami.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Miami</h5>
+                        <p class="card-text">Unique and laid-back beaches with vibrant nightlife.</p>
+                        <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                          Places to go in city
+                        </button>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="https://www.yelp.com/search?cflt=restaurants&find_loc=Las+Vegas%2C+NV">Restaurants</a></li>
+                          <li><a class="dropdown-item" href="https://www.yelp.com/search?cflt=bars&find_loc=Las+Vegas%2C+NV#:~:text=The%20Best%2010%20Bars%20near%20me%20in%20Las,8.%20The%20Chandelier%201733%20Lounges%20...%20More%20items">Bars</a></li>
+                          <li><a class="dropdown-item" href="https://www.yelp.com/search?cflt=hiking&find_loc=Las+Vegas%2C+NV#:~:text=The%20Best%2010%20Hiking%20near%20me%20in%20Las,Cliff%20Shadows%20Trailhead%2013%20Hiking%20...%20More%20items">Hiking</a></li>
+                          <li><a class="dropdown-item" href="https://www.ticketmaster.com/discover/concerts/las-vegas">Local events</a></li>
+                        </ul>
+                      </div>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <img src="newyork.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">New York</h5>
+                        <p class="card-text">The financial and cultural hub of the world, significantly influencing commerce, entertainment, research, technology, and tourism.</p>
+                        <div class="btn-group" role="group">
+                          <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Places to go in city
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="https://www.yelp.com/search?find_desc=Restaurants&find_loc=New+York%2C+NY">Restaurants</a></li>
+                            <li><a class="dropdown-item" href="https://www.yelp.com/search?cflt=bars&find_loc=New+York%2C+NY#:~:text=The%20Best%2010%20Bars%20near%20me%20in%20New,8.%20Signal%20154%20Korean%20Pubs%20...%20More%20items">Bars</a></li>
+                            <li><a class="dropdown-item" href="https://www.yelp.com/search?cflt=hiking&find_loc=New+York%2C+NY#:~:text=The%20Best%2010%20Hiking%20in%20New%20York%2C%20New,Lakes%20Nature%20Preserve%2012%20Hiking%20...%20More%20items">Hiking</a></li>
+                            <li><a class="dropdown-item" href="https://www.ticketmaster.com/discover/concerts/new-york">Local events</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card">
+                      <img src="wyoming.jpg" class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Cheyenne</h5>
+                        <p class="card-text">Cowboys, trains, and the great outdoors.</p>
+                        <div class="btn-group" role="group">
+                          <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            Places to go in city
+                          </button>
+                          <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="https://www.yelp.com/search?cflt=restaurants&find_loc=Cheyenne%2C+WY">Restaurants</a></li>
+                            <li><a class="dropdown-item" href="https://www.yelp.com/search?find_desc=bars&find_loc=Cheyenne%2C+WY#:~:text=Best%20bars%20near%20me%20in%20Cheyenne%2C%20Wyoming%201,Grill%2073%20Country%20Dance%20Halls%20...%20More%20items">Bars</a></li>
+                            <li><a class="dropdown-item" href="https://www.yelp.com/search?find_desc=Hiking+Trails&find_loc=Cheyenne%2C+WY#:~:text=Best%20Hiking%20Trails%20Near%20Me%20in%20Cheyenne%2C%20WY,Open%20Space%204.7%20%283%20reviews%29%20...%20More%20items">Hiking</a></li>
+                            <li><a class="dropdown-item" href="https://www.ticketmaster.com/Cheyenne-Civic-Center-tickets-Cheyenne/venue/246783?irgwc=1&clickid=WqyxtzQkExyNWuLUdnXccTazUkAVGRRYES4DRQ0&camefrom=CFC_BUYAT_390418&impradid=390418&REFERRAL_ID=tmfeedbuyat390418&wt.mc_id=aff_BUYAT_390418&utm_source=390418-Wildfire%20Systems&impradname=Wildfire%20Systems&utm_medium=affiliate&ircid=4272">Local events</a></li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--end of second collumn-->
+                </div>
+              </div>
+               <!--pick a city buttons-->
+      <form id="user-input">
+               <h1 class="display-5 fw-bold">Find my city</h1>
+        <div class="col-md-6 col-xxl-4 my-5 mx-auto">
+          <div class="d-grid gap-2">
+            <div class="form-floating mb-3">
+              <label for="floatingInput">Pick a City</label>
+              <input type="text" class="form-control rounded-3" id="city-name" placeholder="Pick a city">
+        </div>
+        <!--end of pick a city-->
+
+                <!--end of all bootstrap-->
+
+                <!--datepicker- youtube link: https://youtu.be/VCklKwo2TmQ-->
+                <fieldset>
+                  <legend>Pick your date</legend>
+                  <label for="my-date-picker">Date:
+                    <input id="my-date-picker" type="date" min="2022-12-31" name="2040-02-01" value="">
+                      <!--to mark special events --<option value="2023-01-05(date of event)" label="(event name)"></option>-->
+                  </label>
+                </fieldset>
+                <!--end of datepicker-->
+            </div>
           </div>
+        </div>
         </div>
       </div>
         <button class="btn btn-primary" type="submit">Go!</button>
@@ -131,6 +275,12 @@
   <h2 id="city-attractions">attractions placeholder</h2>
   <ul id="attractions"></ul>
 </div>
+<!-- ADDED FOOTER -->
+<footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
+  <div class="container text-center">
+    <small>City Caper &copy; 2023</small>
+  </div>
+</footer>
       
 
 
@@ -539,4 +689,5 @@
 
 <script src="./chris/script.js"></script>
 </body>
+
 </html>
