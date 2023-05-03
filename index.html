@@ -59,9 +59,6 @@
       <div id="back">
         <a id="back-btn" class="btn-flat">BACK</a>
       </div>-->
-
-        
-
       <div class="row no-margin-bottom">
         <div class="col s12">
           <div class="card" id="welcome">
@@ -194,11 +191,8 @@
         <div class="col-md-6 col-xxl-4 my-5 mx-auto">
           <div class="d-grid gap-2">
             <div class="form-floating mb-3">
-              <input type="email" class="form-control rounded-3" id="floatingInput" placeholder="Pick a city">
               <label for="floatingInput">Pick a City</label>
-            </div>
-            <button class="btn btn-primary" type="button">Go!</button>
-          </div>
+              <input type="text" class="form-control rounded-3" id="city-name" placeholder="Pick a city">
         </div>
         <!--end of pick a city-->
 
@@ -209,9 +203,7 @@
                   <legend>Pick your date</legend>
                   <label for="my-date-picker">Date:
                     <input id="my-date-picker" type="date" min="2022-12-31" name="2040-02-01" value="">
-                    <datalist id="my-special-dates" class="">
                       <!--to mark special events --<option value="2023-01-05(date of event)" label="(event name)"></option>-->
-                    </datalist>
                   </label>
                 </fieldset>
                 <!--end of datepicker-->
@@ -219,18 +211,37 @@
           </div>
         </div>
         </div>
+      </div>
+        <button class="btn btn-primary" type="submit">Go!</button>
+      </div>
+      <div id="previous-searches">
+        <h2>Previous Searches:</h2>
+        <ul id="city-searches"></ul>
+      </div>
       </form>
+<div id="search-results">
+  <h1 id="results-title">placeholder</h1>
 
+  <h2 id="city-events">event placeholder</h2>
+  <ul id="events"></ul>
+
+  <h2 id="city-restaurants">restaurant placeholder</h2>
+  <ul id="restaurants"></ul>
+
+  <h2 id="city-entertainment">entertainment placeholder</h2>
+  <ul id="entertainment"></ul>
+
+  <h2 id="city-leisure">leisure placeholder</h2>
+  <ul id="leisure"></ul>
+
+  <h2 id="city-sights">sights placeholder</h2>
+  <ul id="sights"></ul>
+
+  <h2 id="city-attractions">attractions placeholder</h2>
+  <ul id="attractions"></ul>
+</div>
       
-      <div id="modal1" class="modal">
-        <div class="modal-content error">
-          <div class="center-align">
-            <h4>OOPS</h4>
-            <p>You forgot to tell us what you want to do. Go back and make a selection.</p><a href="#!"
-              class="modal-close btn-flat error" id="modal-ok">OK</a>
 
-          </div>
-        </div>
 
         <!-- <div id="cty-img">
           <div ckass="row" id="selection">
@@ -618,6 +629,18 @@
   <div id="map"></div>
   <div id="events2"></div>
 </div> -->
+
+</div>
+
+<div id="my-modal" class="modal">
+
+  <div class="modal-content error">
+      <h4>OOPS</h4>
+      <h3>Please select a city and a date</h3>
+      <button class="close" data-dismiss="modal">&times;</button>
+  </div>
+    
+</div>        
 
 <script src="bootstrap.js"></script>
 
