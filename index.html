@@ -17,7 +17,42 @@
 </head>
 
 <body>
-  
+  <!-- added a header -->
+  <header>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pin-map" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M3.1 11.2a.5.5 0 0 1 .4-.2H6a.5.5 0 0 1 0 1H3.75L1.5 15h13l-2.25-3H10a.5.5 0 0 1 0-1h2.5a.5.5 0 0 1 .4.2l3 4a.5.5 0 0 1-.4.8H.5a.5.5 0 0 1-.4-.8l3-4z"/>
+          <path fill-rule="evenodd" d="M8 1a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999z"/>
+        </svg>        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Featured Cities</a>
+            </li>
+            <!-- <li class="nav-item">
+              <a class="nav-link" href="#">About us</a> -->
+            </li>
+            <!-- <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Dropdown
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
   <div class="container">
     <div class="row no-margin-bottom">
       <div class="card">
@@ -242,7 +277,12 @@
       <h2 id="city-leisure">leisure placeholder</h2>
       <ul id="leisure"></ul>
     </div>
+    
+  <h2 id="city-attractions">attractions placeholder</h2>
+  <ul id="attractions"></ul>
+</div>
 
+     
     <div class="new-search container rounded-4 shadow">
       <h2 id="city-sights">sights placeholder</h2>
       <ul id="sights"></ul>
@@ -253,6 +293,13 @@
       <ul id="attractions"></ul>
     </div>
   </div>
+
+<!-- ADDED FOOTER -->
+<footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
+  <div class="container text-center">
+    <small>City Caper &copy; 2023</small>
+  </div>
+</footer>
 
 
         <!-- <div id="cty-img">
