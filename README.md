@@ -2,6 +2,8 @@
 
 ## Description
 Got a trip coming up? Need any ideas on sprucing up your trip? Well look no further, because this webpage is designed to make your travelling plans easier! All you have to do is search up a city or choose a city from the featured cities list, and our third party API servers will find attractions and events happening in that city based on the date chosen. The API's we use are Ticketmaster (for concerts and other events), and Geoapify (for routing, maps, and directions).
+![City Capers](project-screenshot.png)
+
 
 ## Installation
 N/A
